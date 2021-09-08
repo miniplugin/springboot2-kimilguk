@@ -1,5 +1,6 @@
 #### 20210909(목) 작업예정.
 - 스프링시큐리티 아이디/암호 개발자용으로(java 클래스) 생성.
+- http://127.0.0.1:8080/h2-console 내장 DB툴 실행가능하게 속성추가.
 
 #### 20210908(수)
 - springboot2-kimilguk 프로젝트 생성. https://start.spring.io/ (스프링 initialize 사용)
