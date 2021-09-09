@@ -3,6 +3,7 @@
 - http://127.0.0.1:8080/h2-console 내장 DB툴 실행가능하게 속성추가.
 - 외부라이비러리 spring-session-core 하단에 spring-session-jdbc 수동으로 추가.
 - /error 처리용 util 컨트롤러 및 머스태치 뷰추가.
+- web/IndexController 클래스 생성 및 posts/posts-list.mustache 뷰 생성.
 
 #### 20210908(수)
 - springboot2-kimilguk 프로젝트 생성. https://start.spring.io/ (스프링 initialize 사용)
