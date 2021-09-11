@@ -5,11 +5,12 @@
 - JUnit 테스트 계속, CRUD 중 Create 부터(아래)
 - PostsService 클래스에서 save() 메서드 부터 시작
 - PostsApiControllerTest 클래스에서 posts_save() 메서드 부터 시작
+- 데이터 전송용 임시저장 클래스인 PostsDto 추가
 - JUnit5 에서 기본 CRUD 마무리.
 
 #### 20210910(금)
 - JUnit 테스트로 Posts CRUD 기술참조: https://tlatmsrud.tistory.com/47 , https://webcoding-start.tistory.com/20
-- data 도메인 생성: @Entity Posts 클래스 와 DB 레이어인 JapRepository 클래스 추가(전체리스트 메서드 findAllDesc() 추가)
+- data 저장용 도메인 생성: @Entity Posts 클래스 와 DB 레이어인 JapRepository 클래스 추가(전체리스트 메서드 findAllDesc() 추가)
 - 게시판 Posts 용 더미데이터 import.sql 추가
 - CRUD 용 PostsService 클래스 추가. (검색과 페이징 기능추가된 리스트 getPostsList() 메서드 추가)
 - PostsApiControllerTest 클래스로 시작. posts_list() 메서드부터 시작(위 서비스의 getPostList() 사용)
