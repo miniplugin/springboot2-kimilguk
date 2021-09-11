@@ -3,6 +3,7 @@ package com.edu.springboot2;
 import com.edu.springboot2.domain.posts.Posts;
 import com.edu.springboot2.domain.posts.PostsRepository;
 import com.edu.springboot2.service.PostsService;
+import com.edu.springboot2.web.dto.PostsDto;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +23,45 @@ public class PostsApiControllerTest {
     private PostsService postsService;
 
     @Test
+    public void posts_delete() {
+        Long id = posts_save();
+        logger.info("디버그: " + id);
+        postsService.delete(id);
+    }
+    @Test
+    public void posts_update() {
+        Long id = posts_save();
+        PostsDto postsDto = postsService.findById(id);
+        postsDto.setTitle("제복_update");
+        postsDto.setContent("내용_update");
+        postsService.update(id, postsDto);
+        posts_list();
+    }
+    @Test
+    public void posts_read() {
+        Long id = posts_save();
+        PostsDto postsDto = postsService.findById(id);
+        logger.info("디버그: " + postsDto.toString());
+    }
+    @Test
+    public Long posts_save() {
+        String title = "제목";
+        String content = "내용";
+        PostsDto requestDto = PostsDto.builder()
+                .title(title)
+                .content(content)
+                .author("admin")
+                .build();
+        Long id = postsService.save(requestDto);
+        posts_list();
+        return id;
+    }
+    @Test
     public void posts_list() {
         List<Posts> postsList = postsRepository.findAllDesc();
         postsList.toString();//Jpa 쿼리 연습 용도
         Page<Posts> pagePostsList = postsService.getPostsList("",0);
-        pagePostsList.toString();//실제 사용 용도
+        logger.info("디버그: " + pagePostsList.toString());//실제 사용 용도
     }
 
 

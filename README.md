@@ -1,8 +1,11 @@
-#### 20210911(토) 예정
+#### 20210912(일) 예정
+- 로그인 컨트롤러 테스트 기술참조: https://tlatmsrud.tistory.com/48?category=858575
+
+#### 20210911(토)
 - JUnit 테스트 계속, CRUD 중 Create 부터(아래)
 - PostsService 클래스에서 save() 메서드 부터 시작
 - PostsApiControllerTest 클래스에서 posts_save() 메서드 부터 시작
-- 로그인 컨트롤러 테스트 기술참조: https://tlatmsrud.tistory.com/48?category=858575 
+- JUnit5 에서 기본 CRUD 마무리.
 
 #### 20210910(금)
 - JUnit 테스트로 Posts CRUD 기술참조: https://tlatmsrud.tistory.com/47 , https://webcoding-start.tistory.com/20

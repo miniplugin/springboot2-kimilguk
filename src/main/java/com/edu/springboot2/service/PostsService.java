@@ -2,6 +2,7 @@ package com.edu.springboot2.service;
 
 import com.edu.springboot2.domain.posts.Posts;
 import com.edu.springboot2.domain.posts.PostsRepository;
+import com.edu.springboot2.web.dto.PostsDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,33 @@ public class PostsService {
     private static final int PAGE_POST_COUNT = 5; // 한 페이지에 존재하는 게시글 수
 
     @Transactional
+    public void delete (Long id){
+        Posts posts = postsRepository.findById(id).orElseThrow(()->new
+                IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+        postsRepository.delete(posts);
+    }
+    @Transactional
+    public Long update(Long id, PostsDto requestDto){
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new
+                IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+        posts.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getFileId());
+        return id;
+    }
+    @Transactional
+    public PostsDto findById(Long id){
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new
+                IllegalArgumentException("헤당 게시글이 없습니다. id="+id));
+        return new PostsDto(entity);
+    }
+    @Transactional
+    public Long save(PostsDto requestDto){
+        return postsRepository.save(requestDto.toEntity()).getId();
+    }
+
+    @Transactional
     public Page<Posts> getPostsList(String keyword, Integer pageNum) {
         Page<Posts> page = postsRepository.findByTitleContaining(keyword, PageRequest.of(pageNum, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "id")));
         return page;
     }
+
 }
