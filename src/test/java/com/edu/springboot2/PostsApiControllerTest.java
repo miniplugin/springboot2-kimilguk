@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,7 +62,21 @@ public class PostsApiControllerTest {
         List<Posts> postsList = postsRepository.findAllDesc();
         postsList.toString();//Jpa 쿼리 연습 용도
         Page<Posts> pagePostsList = postsService.getPostsList("",0);
-        logger.info("디버그: " + pagePostsList.toString());//실제 사용 용도
+        logger.info("디버그: " + pagePostsList.toString());//실제 사용: 검색 결과 리스트
+
+        Integer[] pageList = postsService.getPageList(pagePostsList.getTotalElements(), pagePostsList.getTotalPages(), 0);
+        ArrayList<Integer> pageNumbers = new ArrayList<Integer>();
+        logger.info("게시물전체개수: " + pagePostsList.getTotalElements() + ", 페이지전체개수: " + pagePostsList.getTotalPages());//실제사용: 검색결과 하단 페이지 개수로 사용
+        if(!pagePostsList.isEmpty()) {
+            for (Integer pageNum : pageList) {
+                pageNumbers.add(pageNum);
+            }
+        } else {
+            for (Integer pageNum : pageList) {
+                pageNumbers.add(null);
+            }
+        }
+        logger.info("페이지하단리스트: " + pageNumbers);//실제사용: 검색결과 하단 페이지 개수로 사용
     }
 
 

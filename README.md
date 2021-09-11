@@ -1,4 +1,5 @@
 #### 20210912(일) 예정
+- JUnit 테스트로 작업한 내용을 기준으로 실제 PostsApiController 컨트롤러 추가 후 CRUD 뷰단 처리 
 - 로그인 컨트롤러 테스트 기술참조: https://tlatmsrud.tistory.com/48?category=858575
 
 #### 20210911(토)
@@ -7,6 +8,8 @@
 - PostsApiControllerTest 클래스에서 posts_save() 메서드 부터 시작
 - 데이터 전송용 임시저장 클래스인 PostsDto 추가
 - JUnit5 에서 기본 CRUD 마무리.
+- 리스트 하단에 표시랄 페이지 번호 출력 JUnit 테스트 추가: 서비스 클래스에 getPageList() 추가
+- IndexController 클래스에 리스트 뷰단 내용 출력: posts-list.mustache 파일에 변수적용 추가
 
 #### 20210910(금)
 - JUnit 테스트로 Posts CRUD 기술참조: https://tlatmsrud.tistory.com/47 , https://webcoding-start.tistory.com/20
