@@ -1,3 +1,54 @@
 {{>layout/header}}
-
+<script>
+$(document).ready(function() {
+    var totalPageSize = {{totalPageSize}};
+    var currPage = {{page}} + 0;
+    //페이징 처리하기 시작
+    var pageList = {{pageList}};
+    //alert(pageList.length);
+    var disabled = "";
+    if(pageList[0] > 0) {
+        $("#pagination2").append('<li class="page-item"><a class="page-link" href="?page='+(pageList[0]-1)+'">이전</a></li>');
+    }
+    var i = 0;
+    for(i = 0; i < pageList.length; i++){
+        if(pageList[i] == null) { break; }
+        if(currPage == pageList[i]) { disabled = "active";} else { disabled = ""; }
+        $("#pagination2").append('<li class="page-item '+disabled+'"><a class="page-link" href="?page='+pageList[i]+'">'+(pageList[i]+1)+'</a></li>');
+    }
+    if(pageList[0] != null && totalPageSize != (pageList[i-1]+1)) {
+        $("#pagination2").append('<li class="page-item"><a class="page-link" href="?page='+(pageList[i-1]+1)+'">다음</a></li>');
+    }
+});
+</script>
+<form action="/" method="GET">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <input value="{{sessionKeyword}}" name="keyword" type="text" placeholder="검색어를 입력해주세요">
+        <input type="hidden" name="search_type" value="title">
+        <button class="btn btn-secondary">제목 검색</button>
+    </div>
+</form>
+<!-- 목록 출력 영역 -->
+<table class="table table-horizontal table-bordered">
+    <thead class="thead-string">
+    <tr>
+        <th>게시글번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>최종수정일</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#postsList}}
+        <tr>
+            <td>{{id}}</td>
+            <td><a href="/posts/read/{{id}}">{{title}}</a></td>
+            <td>{{author}}</td>
+            <td>{{modifiedDate}}</td>
+        </tr>
+    {{/postsList}}
+    </tbody>
+</table>
+<ul class="pagination justify-content-center" id="pagination2">
+</ul>
 {{>layout/footer}}

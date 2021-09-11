@@ -9,7 +9,9 @@
 - 데이터 전송용 임시저장 클래스인 PostsDto 추가
 - JUnit5 에서 기본 CRUD 마무리.
 - 리스트 하단에 표시랄 페이지 번호 출력 JUnit 테스트 추가: 서비스 클래스에 getPageList() 추가
+- JUnit 에러시 기술 참조: https://www.inflearn.com/questions/157200
 - IndexController 클래스에 리스트 뷰단 내용 출력: posts-list.mustache 파일에 변수적용 추가
+- 검색어 세션으로 처리: 컨트롤러매개변수에 HttpServletRequest request 추가
 
 #### 20210910(금)
 - JUnit 테스트로 Posts CRUD 기술참조: https://tlatmsrud.tistory.com/47 , https://webcoding-start.tistory.com/20
