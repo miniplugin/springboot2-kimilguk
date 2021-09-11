@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
-@RequiredArgsConstructor//이 어노테이션은 초기화 되지않은 final 필드에 대해 생성자를 생성해 줍니다.
-@Controller
+@RequiredArgsConstructor//@Autowired,Inject 대신에 final 클래스에 대해 생성자를 생성해 줍니다.
+@Controller//스프링에서 자동으로 빈 생성
 public class IndexController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final PostsService postsService;
