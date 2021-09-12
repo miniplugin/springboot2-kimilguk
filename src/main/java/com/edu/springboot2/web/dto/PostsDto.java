@@ -1,14 +1,12 @@
 package com.edu.springboot2.web.dto;
 
 import com.edu.springboot2.domain.posts.Posts;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@ToString //PostsDto.toString() 자동생성
 @Getter
 @Setter
 public class PostsDto {
@@ -46,7 +44,7 @@ public class PostsDto {
                 .fileId(fileId)
                 .build();
     }
-
+    /*
     @Override
     public String toString() {
         return "PostsDto{" +
@@ -58,4 +56,5 @@ public class PostsDto {
                 ", modifiedDate=" + modifiedDate +
                 '}';
     }
+    */
 }
