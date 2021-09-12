@@ -1,5 +1,5 @@
 #### 20210913(월) 예정
-- 회원관리 기능 추가: 
+- 회원관리 기능 추가: 일반 컨트롤러 방식
 - data 저장용 도메인 생성: @Entity SimpleUsers 클래스 와 DB 레이어인 JapRepository 클래스 추가
 - simple_users 용 더미데이터를 import.sql 추가
 - data 임시 저장용 SimpleUsersDto 클래스 추가(아래 서비스, 컨트롤러에서 사용)
@@ -12,6 +12,7 @@
 - RestAPI 네이버 아이디 로그인(user 권한) 기능 추가
 
 #### 20210912(일)
+- 게시판 기능 추가: RestApi 컨트롤러 방식
 - JUnit 테스트로 작업한 내용을 기준으로 실제 PostsApiController 컨트롤러 추가 후 CRUD 뷰단 처리(Jpa 컨피그 클래스 추가:아래)
 - @EnableJpaAuditing //대표적으로 생성일자, 수정일자와 같은 도메인마다 공통으로 존재하는 중복 값을 자동으로 입력하는 기능을 사용한다.
 - 첨부파일 기능 추가: ManyFile 엔티티, ManyFileRepository 인터페이스, ManyFileService 서비스, ManyFileDto 클래스 추가
