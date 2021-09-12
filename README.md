@@ -1,5 +1,12 @@
 #### 20210913(월) 예정
-- 회원관리 기능 추가: DB 사용 로그인 체크(아래)
+- 회원관리 기능 추가: 
+- data 저장용 도메인 생성: @Entity SimpleUsers 클래스 와 DB 레이어인 JapRepository 클래스 추가
+- simple_users 용 더미데이터를 import.sql 추가
+- data 임시 저장용 SimpleUsersDto 클래스 추가(아래 서비스, 컨트롤러에서 사용)
+- 트랜잭션이 적용될 SimpleUsersService 서비스클래스 추가
+- SimpleUsersApiController 컨트롤러 추가
+- 회원관리 CRUD 용 뷰단 머스태치 파일 추가
+- 회원 로그인 기능 추가: DB 사용 로그인 체크(아래)
 - 로그인 컨트롤러(admin, user 권한) 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
 - 스프링 시큐리티 이용 권한 체크 추가
 - RestAPI 네이버 아이디 로그인(user 권한) 기능 추가
