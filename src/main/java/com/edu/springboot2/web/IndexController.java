@@ -26,6 +26,17 @@ public class IndexController {
     private final PostsService postsService;
     private final ManyFileService manyFileService;
 
+    @GetMapping("/posts/update/{id}")
+    public String postsUpdate(@PathVariable Long id, Model model) throws Exception {
+        PostsDto dto = postsService.findById(id);
+        model.addAttribute("post",dto);
+        //다중 파일 시작
+        List<ManyFile> manyFileList = manyFileService.getManyFile(id);
+        if(manyFileList.size() > 0) {
+            model.addAttribute("manyFileList", manyFileList);
+        }
+        return "posts/posts-update";
+    }
     @GetMapping("/posts/save")
     public String postsSave(Model model){
 

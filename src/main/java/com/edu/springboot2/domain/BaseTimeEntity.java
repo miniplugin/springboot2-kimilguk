@@ -10,8 +10,8 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter //겟터 매서드 자동생성 명시
-@MappedSuperclass //Jpa 객체 매핑의 상위 명시
-@EntityListeners(AuditingEntityListener.class) //공통으로 사용하는 엔티티로 명시
+@MappedSuperclass //Jpa 객체 매핑을 부모클래스로 명시
+@EntityListeners(AuditingEntityListener.class) //공통으로 사용하는 Auditing 엔티티로 명시
 public abstract class BaseTimeEntity {
 
     @CreatedDate

@@ -1,10 +1,14 @@
-#### 20210912(일) 예정
-- JUnit 테스트로 작업한 내용을 기준으로 실제 PostsApiController 컨트롤러 추가 후 CRUD 뷰단 처리 
-- 첨부파일 기능 추가: ManyFile 엔티티, ManyFileRepository 인터페이스, ManyFileService 서비스, ManyFileDto 클래스 추가
+#### 20210913(월) 예정
 - 회원관리 기능 추가: DB 사용 로그인 체크(아래)
 - 로그인 컨트롤러(admin, user 권한) 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
 - 스프링 시큐리티 이용 권한 체크 추가
 - RestAPI 네이버 아이디 로그인(user 권한) 기능 추가
+
+#### 20210912(일)
+- JUnit 테스트로 작업한 내용을 기준으로 실제 PostsApiController 컨트롤러 추가 후 CRUD 뷰단 처리(Jpa 컨피그 클래스 추가:아래)
+- @EnableJpaAuditing //대표적으로 생성일자, 수정일자와 같은 도메인마다 공통으로 존재하는 중복 값을 자동으로 입력하는 기능을 사용한다.
+- 첨부파일 기능 추가: ManyFile 엔티티, ManyFileRepository 인터페이스, ManyFileService 서비스, ManyFileDto 클래스 추가
+- 첨부파일 처리용 ManyFileApiController 컨트롤러 추가.
 
 #### 20210911(토)
 - JUnit 테스트 계속, CRUD 중 Create 부터(아래)
