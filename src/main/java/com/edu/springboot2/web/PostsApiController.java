@@ -1,6 +1,6 @@
 package com.edu.springboot2.web;
 
-import com.edu.springboot2.service.PostsService;
+import com.edu.springboot2.service.posts.PostsService;
 import com.edu.springboot2.web.dto.PostsDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

@@ -2,7 +2,7 @@ package com.edu.springboot2.util;
 
 import com.edu.springboot2.domain.posts.Posts;
 import com.edu.springboot2.domain.posts.PostsRepository;
-import com.edu.springboot2.service.ManyFileService;
+import com.edu.springboot2.service.posts.ManyFileService;
 import com.edu.springboot2.web.dto.ManyFileDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RestController
 public class ManyFileApiController {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ManyFileService fileService;
     private final PostsRepository postsRepository;
 
@@ -97,7 +97,6 @@ public class ManyFileApiController {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            fileId = null;
         }
         logger.info("디버그 " + fileId);
         return fileId;

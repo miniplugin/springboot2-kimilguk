@@ -2,8 +2,8 @@ package com.edu.springboot2.web;
 
 import com.edu.springboot2.domain.posts.ManyFile;
 import com.edu.springboot2.domain.posts.Posts;
-import com.edu.springboot2.service.ManyFileService;
-import com.edu.springboot2.service.PostsService;
+import com.edu.springboot2.service.posts.ManyFileService;
+import com.edu.springboot2.service.posts.PostsService;
 import com.edu.springboot2.web.dto.PostsDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -73,7 +73,7 @@ public class IndexController {
         model.addAttribute("postsList",postsList);
         model.addAttribute("totalPageSize",postsList.getTotalPages());
                 Integer[] pageList = postsService.getPageList(postsList.getTotalElements(), postsList.getTotalPages(), page);
-        ArrayList pageNumbers = new ArrayList();
+        ArrayList<Integer> pageNumbers = new ArrayList<Integer>();
         if(!postsList.isEmpty()) {
             for (Integer pageNum : pageList) {
                 pageNumbers.add(pageNum);

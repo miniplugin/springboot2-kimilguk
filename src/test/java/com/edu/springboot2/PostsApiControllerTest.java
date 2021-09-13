@@ -2,7 +2,7 @@ package com.edu.springboot2;
 
 import com.edu.springboot2.domain.posts.Posts;
 import com.edu.springboot2.domain.posts.PostsRepository;
-import com.edu.springboot2.service.PostsService;
+import com.edu.springboot2.service.posts.PostsService;
 import com.edu.springboot2.web.dto.PostsDto;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
