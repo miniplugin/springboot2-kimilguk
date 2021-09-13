@@ -26,6 +26,11 @@ public class IndexController {
     private final PostsService postsService;
     private final ManyFileService manyFileService;
 
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String message, Model model){
+        model.addAttribute("message", message);
+        return "login";
+    }
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) throws Exception {
         PostsDto dto = postsService.findById(id);

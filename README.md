@@ -1,8 +1,20 @@
 #### 20210914(화) 예정
-- 작업한 회원관리 기능을 기준으로 회원 로그인 기능 추가: DB 사용 로그인 체크(아래)
-- 로그인 컨트롤러(admin, user 권한) 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
-- 스프링 시큐리티 이용 권한 체크 추가
-- RestAPI 네이버 아이디 로그인(user 권한) 기능 추가
+- 우선 DB 로그인 처리 부터 시작. 
+- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 WebConfig 클래스 추가 후 아래 계속.
+- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 LoginUserArgumentResolver 클래스로 처리.
+- 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
+- application-oauth-local.properties 설정파일 추가(사용: spring.profiles.include=oauth-local,db-h2)
+- 네이버 API OAuth2 사용으로 인증에 관련된 변수값 임시 저장용 Dto 클래스 추가
+- SecurityConfig 클래스에서 OAuth2 추가(아래)
+```properties
+  .and()
+  .oauth2Login()
+  .loginPage("/login")//추가
+  .userInfoEndpoint()
+  .userService(customOAuth2UserService);//아래 configure 실행결과 처리 + 네이버 API OAuth2 를 처리할 서비스 지정
+```
+- 위 configure() 메서드 결과를 네이버 Api 로그인과 같이 사용하기 위해서 CustomOAuth2UserService 서비스 클래스 추가
+- 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가(나중에 네이버로그인시 처리)
 
 #### 20210913(월)
 - 회원관리 기능 추가: 일반 컨트롤러 방식
@@ -10,8 +22,11 @@
 - simple_users 용 더미데이터를 import.sql 추가
 - data 임시 저장용 SimpleUsersDto 클래스 추가(아래 서비스, 컨트롤러에서 사용)
 - 트랜잭션이 적용될 SimpleUsersService 서비스클래스 추가
-- SimpleUsersController 컨트롤러 추가 + ScriptUtils 처리 후 메세지 출력 클래스 추가
+- SimpleUsersController 컨트롤러 추가 + ScriptUtils 메세지 출력 클래스 추가
 - 회원관리 CRUD 용 뷰단 머스태치 파일 추가
+- 작업한 회원관리 기능을 기준으로 회원 로그인 기능 추가: DB 사용 로그인 체크(아래)
+- 스프링 시큐리티 이용 로그인 기능 추가: SecurityConfig 클래스에서 configure(AuthenticationManagerBuilder auth) 사용.
+- Role 권한 데이터 구조화 추가.
 
 #### 20210912(일)
 - 게시판 기능 추가: RestApi 컨트롤러 방식
