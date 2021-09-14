@@ -1,10 +1,16 @@
 package com.edu.springboot2.web;
 
+import com.edu.springboot2.config.auth.LoginUser;
+import com.edu.springboot2.config.auth.dto.SessionUser;
 import com.edu.springboot2.domain.posts.ManyFile;
 import com.edu.springboot2.domain.posts.Posts;
+import com.edu.springboot2.domain.simple_users.SimpleUsersRepository;
 import com.edu.springboot2.service.posts.ManyFileService;
 import com.edu.springboot2.service.posts.PostsService;
+import com.edu.springboot2.service.simple_users.SimpleUsersService;
+import com.edu.springboot2.util.ScriptUtils;
 import com.edu.springboot2.web.dto.PostsDto;
+import com.edu.springboot2.web.dto.SimpleUsersDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +32,8 @@ public class IndexController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final PostsService postsService;
     private final ManyFileService manyFileService;
+    private final SimpleUsersRepository simpleUsersRepository;
+    private final SimpleUsersService simpleUsersService;
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String message, Model model){
@@ -32,8 +41,11 @@ public class IndexController {
         return "login";
     }
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) throws Exception {
+    public String postsUpdate(@LoginUser SessionUser sessionUser, HttpServletResponse response, @PathVariable Long id, Model model) throws Exception {
         PostsDto dto = postsService.findById(id);
+        if( !sessionUser.getName().equals(dto.getAuthor()) && !"ROLE_ADMIN".equals(sessionUser.getRole()) ) {
+            ScriptUtils.alertAndBackPage(response, "본인 글만 수정 가능합니다.");
+        }
         model.addAttribute("post",dto);
         //다중 파일 시작
         List<ManyFile> manyFileList = manyFileService.getManyFile(id);
@@ -43,8 +55,10 @@ public class IndexController {
         return "posts/posts-update";
     }
     @GetMapping("/posts/save")
-    public String postsSave(Model model){
-
+    public String postsSave(@LoginUser SessionUser sessionUser,Model model){
+        if(sessionUser != null){
+            model.addAttribute("sessionUserName", sessionUser.getName());
+        }
         return "posts/posts-save";
     }
     @GetMapping("/posts/read/{id}")
@@ -59,7 +73,18 @@ public class IndexController {
         return "posts/posts-read";
     }
     @GetMapping("/")
-    public String index(HttpServletRequest request, String search_type, @RequestParam(value="keyword", defaultValue = "")String keyword, @RequestParam(value = "page",required=false,defaultValue="0")Integer page, Model model) {
+    public String index(@LoginUser SessionUser sessionUser, HttpServletRequest request, String search_type, @RequestParam(value="keyword", defaultValue = "")String keyword, @RequestParam(value = "page",required=false,defaultValue="0")Integer page, Model model) {
+        if(sessionUser != null){
+            model.addAttribute("sessionUserName", sessionUser.getName());
+            if(simpleUsersRepository.findByName(sessionUser.getName()) != null) {//DB 로그인인지 체크
+                SimpleUsersDto simpleUsers = simpleUsersService.findByName(sessionUser.getName());
+                model.addAttribute("sessionUserId", simpleUsers.getId());
+            } else {
+                model.addAttribute("sessionUserId", null);
+            }
+            //권한확인(아래)
+            model.addAttribute("sessionRoleAdmin", ("ROLE_ADMIN".equals(sessionUser.getRole())?"admin":null));
+        }
         String sessionKeyword = (String) request.getSession().getAttribute("sessionKeyword");
         if(keyword.isEmpty() && sessionKeyword == null) {
             sessionKeyword = "";

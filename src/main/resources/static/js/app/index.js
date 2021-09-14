@@ -124,8 +124,7 @@ var main = {
         }
         var data = {
             title: $('#title').val(),
-            content: $('#content').val(),
-            fileId: $('#file_id').val()
+            content: $('#content').val()
         };
         $.ajax({
             type: 'PUT',

@@ -2,10 +2,12 @@ package com.edu.springboot2.config.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -42,15 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rolePrefix("ROLE_")
                 .usersByUsernameQuery("select username, replace(password, '$2y', '$2a'), true from simple_users where username = ?")
                 .authoritiesByUsernameQuery("select username, role from simple_users where username = ?");
-
-        /*
-        auth.inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("1234")).roles("ADMIN")
-                .and()
-                .withUser("user").password(passwordEncoder().encode("1234")).roles("USER")
-                .and()
-                .withUser("guest").password(passwordEncoder().encode("guest")).roles("GUEST");
-        */
     }
-
+    // passwordEncoder() 추가
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

@@ -1,7 +1,4 @@
-#### 20210914(화) 예정
-- 우선 DB 로그인 처리 부터 시작. 
-- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 WebConfig 클래스 추가 후 아래 계속.
-- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 LoginUserArgumentResolver 클래스로 처리.
+#### 20210916(목) 예정
 - 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
 - application-oauth-local.properties 설정파일 추가(사용: spring.profiles.include=oauth-local,db-h2)
 - 네이버 API OAuth2 사용으로 인증에 관련된 변수값 임시 저장용 Dto 클래스 추가
@@ -15,6 +12,20 @@
 ```
 - 위 configure() 메서드 결과를 네이버 Api 로그인과 같이 사용하기 위해서 CustomOAuth2UserService 서비스 클래스 추가
 - 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가(나중에 네이버로그인시 처리)
+
+#### 20210915(수) 예정
+- indexController 클래스에 회원가입 및 마이페이지 기능 추가.
+- 회원가입 뷰단 signup.mustache 추가
+- 마이페이지 뷰단 mypage/mypage.mustache 추가
+
+#### 20210914(화)
+- 우선 DB 로그인 처리 부터 시작. 
+- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 WebConfig 클래스 추가 후 아래 계속.
+- 세션으로 저장될 임시 저장값 dto/SessionUser 클래스 추가.
+- 로그인 세션 발생을 컨트롤러 매개변수로 추가하기 위해 LoginUserArgumentResolver 클래스 + LoginUser 인터페이스 추가.
+- indexController 클래스의 루트, 글쓰기, 글수정 매핑매서드에 @LoginUser 인터페이스로 구현된 SessionUser 매개변수 추가.
+- indexController 클래스에서 루트로 접근시 posts-list, simple_users/list 머스태치 파일 상단에 권한별 버튼보이기 처리.
+- indexController 클래스에서 본인이 작성한 글만 수정,삭제 가능하게 추가.
 
 #### 20210913(월)
 - 회원관리 기능 추가: 일반 컨트롤러 방식
