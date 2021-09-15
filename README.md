@@ -1,7 +1,9 @@
 #### 20210916(목) 예정
 - 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
-- application-oauth-local.properties 설정파일 추가(사용: spring.profiles.include=oauth-local,db-h2)
-- 네이버 API OAuth2 사용으로 인증에 관련된 변수값 임시 저장용 Dto 클래스 추가
+- application-oauth-local.properties 설정파일 추가 및 application-db-h2.properties 데이터설정도 분리
+- 사용: spring.profiles.include=oauth-local,db-h2
+- 네이버 API OAuth2 사용으로 인증에 관련된 변수값 임시 저장처리용 Dto/OAuthAttributes 클래스 추가
+- OAuth 인증 후 DB 저장용 OAuthUsers @엔티티 클래스 + OAuthUsersRepository DAO 인터페이스 생성(여기까지)
 - SecurityConfig 클래스에서 OAuth2 추가(아래)
 ```properties
   .and()
