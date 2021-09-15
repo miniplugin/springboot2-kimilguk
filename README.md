@@ -13,10 +13,27 @@
 - 위 configure() 메서드 결과를 네이버 Api 로그인과 같이 사용하기 위해서 CustomOAuth2UserService 서비스 클래스 추가
 - 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가(나중에 네이버로그인시 처리)
 
-#### 20210915(수) 예정
+#### 20210915(수) 
 - indexController 클래스에 회원가입 및 마이페이지 기능 추가.
 - 회원가입 뷰단 signup.mustache 추가
 - 마이페이지 뷰단 mypage/mypage.mustache 추가
+- 업데이트는 Jpa 메서드 사용하지 않고, 엔티티에서 Set 처리해도 적용됨(아래)
+```java
+//SimpleUsers @엔티티 클래스
+public void update(String username, String password, String role, Boolean enabled){
+        String encPassword = null;
+        if(!password.isEmpty()) {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            encPassword = passwordEncoder.encode(password);
+        }
+        this.username = username;
+        if(!password.isEmpty()) {//에러페이지 만들기 encPassword
+            this.password = encPassword;
+        }
+        this.role = role;
+        this.enabled = enabled;
+}
+```
 
 #### 20210914(화)
 - 우선 DB 로그인 처리 부터 시작. 

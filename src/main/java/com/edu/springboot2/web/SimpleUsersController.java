@@ -1,5 +1,8 @@
 package com.edu.springboot2.web;
 
+import com.edu.springboot2.config.auth.LoginUser;
+import com.edu.springboot2.config.auth.dto.SessionUser;
+import com.edu.springboot2.domain.simple_users.SimpleUsersRepository;
 import com.edu.springboot2.service.simple_users.SimpleUsersService;
 import com.edu.springboot2.util.ScriptUtils;
 import com.edu.springboot2.web.dto.SimpleUsersDto;
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SimpleUsersController {
     private Logger logger = LoggerFactory.getLogger(getClass());
     private final SimpleUsersService simpleUsersService;
+    private final SimpleUsersRepository simpleUsersRepository;
 
     @PostMapping("/simple_users/delete")
     public String simpleUsersDeletePost(HttpServletResponse response,SimpleUsersDto simpleUsersDto, Model model) throws Exception {
@@ -51,7 +55,18 @@ public class SimpleUsersController {
         return "simple_users/save";
     }
     @GetMapping("/simple_users/list")
-    public String simpleUsersList(Model model){
+    public String simpleUsersList(@LoginUser SessionUser sessionUser, Model model){
+        if(sessionUser != null){
+            model.addAttribute("sessionUserName", sessionUser.getName());
+            if(simpleUsersRepository.findByName(sessionUser.getName()) != null) {//DB 로그인인지 체크
+                SimpleUsersDto simpleUsers = simpleUsersService.findByName(sessionUser.getName());
+                model.addAttribute("sessionUserId", simpleUsers.getId());
+            } else {
+                model.addAttribute("sessionUserId", null);
+            }
+            //권한확인(아래)
+            model.addAttribute("sessionRoleAdmin", ("ROLE_ADMIN".equals(sessionUser.getRole())?"admin":null));
+        }
         model.addAttribute("simpleUsers", simpleUsersService.findAllDesc());
         return "simple_users/list";
     }

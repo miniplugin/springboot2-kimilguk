@@ -48,7 +48,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
             }
             SessionUser sessionUser = SessionUser.builder()
                     .name(userName)
-                    .role(userAuthor)
+                    .role(userAuthor.getKey())
                     .build();
             httpSession.setAttribute("sessionUser", sessionUser);//현재 세션은 DB 를 이용해서 생성됨
             logger.info("사용자권한1 " + userAuthor + " 세션사용자명1 " + sessionUser.getName() + " 로그인사용자명1 "+ sessionUser.getName());

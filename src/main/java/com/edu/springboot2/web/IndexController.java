@@ -4,6 +4,7 @@ import com.edu.springboot2.config.auth.LoginUser;
 import com.edu.springboot2.config.auth.dto.SessionUser;
 import com.edu.springboot2.domain.posts.ManyFile;
 import com.edu.springboot2.domain.posts.Posts;
+import com.edu.springboot2.domain.simple_users.SimpleUsers;
 import com.edu.springboot2.domain.simple_users.SimpleUsersRepository;
 import com.edu.springboot2.service.posts.ManyFileService;
 import com.edu.springboot2.service.posts.PostsService;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +37,44 @@ public class IndexController {
     private final SimpleUsersRepository simpleUsersRepository;
     private final SimpleUsersService simpleUsersService;
 
+    @PostMapping("/mypage/signout")
+    public String simpleUsersDeletePost(HttpServletResponse response,SimpleUsersDto simpleUsersDto) throws Exception {
+        simpleUsersService.delete(simpleUsersDto.getId());
+        ScriptUtils.alertAndMovePage(response, "회원 탈퇴 되었습니다.", "/logout");
+        //return "redirect:/simple_users/list";
+        return null;
+    }
+    @PostMapping("/mypage/mypage")
+    public String simpleUsersUpdatePost(HttpServletResponse response, SimpleUsersDto simpleUsersDto) throws Exception {
+        simpleUsersDto.setRole("USER");//해킹 위험 때문에 강제로 추가
+        simpleUsersService.update(simpleUsersDto.getId(), simpleUsersDto);
+        ScriptUtils.alertAndMovePage(response, "수정 되었습니다.", "/mypage/mypage/" + simpleUsersDto.getId());
+        //return "redirect:/simple_users/update/" + simpleUsersDto.getId();
+        return null;
+    }
+    @GetMapping("/mypage/mypage/{id}")
+    public String simpleUsersUpdate(HttpServletResponse response,@PathVariable Long id, Model model){
+        model.addAttribute("simple_user", simpleUsersService.findById(id));
+        return "mypage/mypage";
+    }
+    @PostMapping("/signup")
+    public String signUpPost(HttpServletResponse response, SimpleUsersDto simpleUsersDto, Model model) throws Exception {
+        logger.info("디버그 :" + simpleUsersDto.toString());
+        simpleUsersDto.setRole("USER");//해킹 위험 때문에 강제로 추가
+        SimpleUsers simpleUsers = simpleUsersRepository.findByName(simpleUsersDto.getUsername());
+        if(simpleUsers == null) {
+            simpleUsersService.save(simpleUsersDto);
+            ScriptUtils.alertAndMovePage(response, "회원가입 되었습니다. 로그인해 주세요", "/");
+        }else{
+            ScriptUtils.alertAndBackPage(response, "중복 아이디가 존재 합니다 아이디를 다시 입력해 주세요.");
+        }
+        //return "redirect:/simple_users/list";
+        return null;
+    }
+    @GetMapping("/signup")
+    public String signupGet(){
+        return "signup";
+    }
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String message, Model model){
         model.addAttribute("message", message);

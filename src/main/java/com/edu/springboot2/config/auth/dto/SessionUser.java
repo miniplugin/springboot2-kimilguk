@@ -9,10 +9,10 @@ import java.io.Serializable;
 @Getter
 public class SessionUser implements Serializable {
     private String name;
-    private Role role;
+    private String role;
 
     @Builder
-    public SessionUser(String name, Role role){
+    public SessionUser(String name, String role){
         this.name = name;
         this.role = role;
     }
