@@ -7,7 +7,8 @@
 - PostgreSQL 설치(https://www.postgresql.org/) 잠조, https://dora-guide.com/postgresql-install/
 - 헤로쿠용 으로 사용가능하게 설정 파일 추가: application-db-postgres.properties
 - #spring.jpa.hibernate.ddl-auto=create-drop , spring.jpa.hibernate.ddl-auto=update 번갈아 주석처리하면서 사용
-- 클라우드 헤로쿠용으로 배포용 설정 파일 추가: application-db-heroku.properties, application-oauth-naver.properties 
+- 클라우드 헤로쿠용으로 배포용 설정 파일 추가: application-db-heroku.properties, application-oauth-naver.properties
+- 헤로쿠전용 웹서버 실행파일 설정 추가: Procfile
 
 #### 20210916(목)
 - 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575

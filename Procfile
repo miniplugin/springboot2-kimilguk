@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/springboot2-kimilguk-1.0.3-SNAPSHOT.jar
