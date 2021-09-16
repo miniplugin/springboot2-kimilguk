@@ -1,7 +1,7 @@
 package com.edu.springboot2.web;
 
-import com.edu.springboot2.config.auth.LoginUser;
-import com.edu.springboot2.config.auth.dto.SessionUser;
+import com.edu.springboot2.auth.LoginUser;
+import com.edu.springboot2.auth.dto.SessionUser;
 import com.edu.springboot2.domain.simple_users.SimpleUsersRepository;
 import com.edu.springboot2.service.simple_users.SimpleUsersService;
 import com.edu.springboot2.util.ScriptUtils;
@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 이 클래스는 회원관리 웹 URL 매핑을 전송되는 data 와 함께 처리하는 기능
+ */
 @RequiredArgsConstructor
 @Controller
 public class SimpleUsersController {

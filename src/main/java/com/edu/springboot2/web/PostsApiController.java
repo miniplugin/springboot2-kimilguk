@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 이 클래스는 게시판 웹 URL 매핑을 전송되는 data 와 함께 처리하는 기능
+ */
 @RequiredArgsConstructor//@Autowired,Inject 대신에 final 클래스에 대해 생성자를 생성해 줍니다.
 @RestController//뷰단에서 Json 데이터 처리 사용시 스프링에서 자동으로 빈 생성
 public class PostsApiController {

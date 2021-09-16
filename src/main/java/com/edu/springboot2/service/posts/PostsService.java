@@ -12,6 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 이 클래스는 게시물 정보를 받아서 DAO 레포지토리를 호출 하는 기능
+ */
 @RequiredArgsConstructor//이 어노테이션은 초기화 되지않은 final 객체에 대해 생성자를 생성해 줍니다.
 @Service//이 어노테이션은 클래스를 스프링빈으로 사용가능하게 함.
 public class PostsService {

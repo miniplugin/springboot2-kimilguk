@@ -12,6 +12,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/**
+ * 이 클래스는 프로젝트 에러정보를 받아서 웹페이지로 전달 하는 기능
+ */
 @Controller
 public class CustomErrorController implements ErrorController {
 

@@ -1,7 +1,7 @@
 package com.edu.springboot2.service.oauth2;
 
-import com.edu.springboot2.config.auth.dto.OAuthAttributes;
-import com.edu.springboot2.config.auth.dto.SessionUser;
+import com.edu.springboot2.auth.dto.OAuthAttributes;
+import com.edu.springboot2.auth.dto.SessionUser;
 import com.edu.springboot2.domain.oauth_users.OAuthUsers;
 import com.edu.springboot2.domain.oauth_users.OAuthUsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
 /**
- * 이 클래스는 네이버 아이디 로그인 인증 정보를 받아서 DB 저장 및 세션 처리 하는 역할
+ * 이 클래스는 네이버 아이디 로그인 인증 정보를 받아서 DAO 레포지토리를 호출 및 세션 처리 하는 기능
  */
 @RequiredArgsConstructor
 @Service
@@ -40,7 +40,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .name(oAuthUsers.getName())
                 .role(oAuthUsers.getRoleKey())
                 .build();
-        httpSession.setAttribute("sessionUser", sessionUser);;//기존 DB 로그인 세션로직 참여
+        httpSession.setAttribute("sessionUser", sessionUser);//기존 DB 로그인 세션로직 참여
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(oAuthUsers.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());

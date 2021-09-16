@@ -1,6 +1,6 @@
 package com.edu.springboot2.domain.oauth_users;
 
-import com.edu.springboot2.config.auth.Role;
+import com.edu.springboot2.auth.Role;
 import com.edu.springboot2.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * 이 클래스는 OAuth 인증 후 DB 저장용 @엔티티 객체(테이블)을 생성하는 기능
+ */
 @Getter
 @NoArgsConstructor
 @Entity

@@ -1,5 +1,6 @@
-package com.edu.springboot2.config.auth;
+package com.edu.springboot2.config;
 
+import com.edu.springboot2.auth.Role;
 import com.edu.springboot2.service.oauth2.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * 이 클래스는 스프링 시큐리티 이용 로그인 및 권한부여 하는 기능
+ */
 @RequiredArgsConstructor //이 어노테이션은 초기화 되지않은 final 객체에 대해 생성자를 생성해 줍니다.
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

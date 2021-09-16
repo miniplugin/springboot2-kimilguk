@@ -1,8 +1,11 @@
-package com.edu.springboot2.config.auth;
+package com.edu.springboot2.auth;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 이 클래스는 회원 권한 데이터를 enum 열거형으로 구조화
+ */
 @Getter
 @RequiredArgsConstructor
 public enum Role {

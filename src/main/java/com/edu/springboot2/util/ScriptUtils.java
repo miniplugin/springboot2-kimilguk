@@ -3,6 +3,9 @@ package com.edu.springboot2.util;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
+/**
+ * 이 클래스는 각종 컨트롤러 처리 후 결과 메세지를 웹페이지에 출력하는 기능
+ */
 public class ScriptUtils {
 
     public static void init(HttpServletResponse response) {

@@ -11,14 +11,14 @@
 - OAuth 인증 후 DB 저장용 OAuthUsers @엔티티 클래스 + OAuthUsersRepository DAO 인터페이스 생성
 - SecurityConfig 클래스에서 OAuth2 추가(아래)
 ```properties
-  .and()
-  .oauth2Login()
-  .loginPage("/login")//추가
-  .userInfoEndpoint()
-  .userService(customOAuth2UserService);//네이버 API OAuth2 를 처리할 서비스 지정
+    .and()//여기부터 OAuth 로그인처리
+    .oauth2Login()
+    .loginPage("/login")//로그인페이지 추가
+    .userInfoEndpoint()
+    .userService(customOAuth2UserService);//네이버 API OAuth2 를 처리할 서비스 지정
 ```
 - 위 configure() 메서드 결과를 네이버 Api 로그인과 같이 사용하기 위해서 CustomOAuth2UserService 서비스 클래스 추가
-- 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가(나중에 네이버로그인시 처리)
+- 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가 후 OAuthAttributes 네이버로그인시 처리)
 
 #### 20210915(수) 
 - indexController 클래스에 회원가입 및 마이페이지 기능 추가.

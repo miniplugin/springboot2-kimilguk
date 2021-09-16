@@ -1,6 +1,5 @@
-package com.edu.springboot2.config.auth.dto;
+package com.edu.springboot2.auth.dto;
 
-import com.edu.springboot2.config.auth.Role;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * 이 클래스는 첨부파일 메타정보를 DB 저장용 @엔티티 객체(테이블)을 생성하는 기능
+ * @ManyToOne 다대일 관계=제약조건 자동 생성됨
+ */
 @Getter
 @Entity
 @NoArgsConstructor

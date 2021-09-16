@@ -8,6 +8,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+/**
+ * 이 클래스는 게시물관리 DB 저장용 @엔티티 객체(테이블)을 생성하는 기능
+ */
 @Getter
 @NoArgsConstructor
 @ToString //Posts.toString() 자동생성

@@ -1,4 +1,4 @@
-package com.edu.springboot2.config.auth;
+package com.edu.springboot2.auth;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

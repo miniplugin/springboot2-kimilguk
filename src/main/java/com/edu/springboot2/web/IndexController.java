@@ -1,7 +1,7 @@
 package com.edu.springboot2.web;
 
-import com.edu.springboot2.config.auth.LoginUser;
-import com.edu.springboot2.config.auth.dto.SessionUser;
+import com.edu.springboot2.auth.LoginUser;
+import com.edu.springboot2.auth.dto.SessionUser;
 import com.edu.springboot2.domain.posts.ManyFile;
 import com.edu.springboot2.domain.posts.Posts;
 import com.edu.springboot2.domain.simple_users.SimpleUsers;
@@ -28,6 +28,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 이 클래스는 메인페이지 웹 URL 매핑을 전송되는 data 와 함께 처리하는 기능
+ */
 @RequiredArgsConstructor//@Autowired,Inject 대신에 final 클래스에 대해 생성자를 생성해 줍니다.
 @Controller//스프링에서 자동으로 빈 생성
 public class IndexController {

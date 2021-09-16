@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * 이 클래스는 서비스와 컨트롤러에서 전송되는 data 를 임시 저장하는 기능
+ */
 @NoArgsConstructor
 @ToString //PostsDto.toString() 자동생성
 @Getter

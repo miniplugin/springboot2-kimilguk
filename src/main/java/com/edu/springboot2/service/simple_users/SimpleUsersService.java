@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 이 클래스는 회원정보를 받아서 DAO 레포지토리를 호출 하는 기능
+ */
 @RequiredArgsConstructor
 @Service
 public class SimpleUsersService {

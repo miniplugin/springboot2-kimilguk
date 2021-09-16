@@ -9,6 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
+/**
+ * 이 클래스는 회원관리 DB 저장용 @엔티티 객체(테이블)을 생성하는 기능
+ */
 @Getter
 @ToString//ToString 매서드 자동생성.
 @NoArgsConstructor

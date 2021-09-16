@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 이 클래스는 첨부파일 메타정보를 받아서 DAO 레포지토리를 호출 하는 기능
+ */
 @Service
 public class ManyFileService {
     private ManyFileRepository fileRepository;

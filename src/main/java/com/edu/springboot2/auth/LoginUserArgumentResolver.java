@@ -1,6 +1,6 @@
-package com.edu.springboot2.config.auth;
+package com.edu.springboot2.auth;
 
-import com.edu.springboot2.config.auth.dto.SessionUser;
+import com.edu.springboot2.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * 이 클래스는 첨부파일 정보를 받아서 서비스호출과 물리적경로에 저장하는 기능
+ */
 @RequiredArgsConstructor
 @RestController
 public class ManyFileApiController {
