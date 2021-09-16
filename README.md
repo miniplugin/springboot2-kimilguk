@@ -1,7 +1,13 @@
-#### 20210917(금) 예정
-- DB 종류를 PostgreSQL 로 마이그 레이션
-- 헤로쿠용 으로 사용가능하게 설정 파일 추가
-- 클라우드 헤로쿠용으로 배포
+#### 전체 작업 10일용 ( 9월8일 ~ 9월17일 )
+- 결과 깃 소스: https://github.com/miniplugin/springboot2-kimilguk
+- 결과 헤로쿠 배포: https://kimilguk-springboot2.herokuapp.com/
+
+#### 20210917(금)
+- DB 종류를 PostgreSQL 로 마이그 레이션: 
+- PostgreSQL 설치(https://www.postgresql.org/) 잠조, https://dora-guide.com/postgresql-install/
+- 헤로쿠용 으로 사용가능하게 설정 파일 추가: application-db-postgres.properties
+- #spring.jpa.hibernate.ddl-auto=create-drop , spring.jpa.hibernate.ddl-auto=update 번갈아 주석처리하면서 사용
+- 클라우드 헤로쿠용으로 배포용 설정 파일 추가: application-db-heroku.properties, application-oauth-naver.properties 
 
 #### 20210916(목)
 - 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575

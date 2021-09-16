@@ -14,7 +14,10 @@ import org.springframework.data.domain.Page;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 이 클래스틑 게시판 도메인과 DAO 생성 후 JUnit 으로 CRUD 테스트를 확인하는 기능
+ * 위 테스트 후 컨트롤러와 뷰단(머스태치) 작업진행
+ */
 @SpringBootTest//별다른 설정없이 SpringBootTest를 사용할 경우 H2 데이터 베이스를 자동으로 실행
 public class PostsApiControllerTest {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
