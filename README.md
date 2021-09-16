@@ -1,16 +1,21 @@
-#### 20210916(목) 예정
+#### 20210917(금) 예정
+- DB 종류를 PostgreSQL 로 마이그 레이션
+- 헤로쿠용 으로 사용가능하게 설정 파일 추가
+- 클라우드 헤로쿠용으로 배포
+
+#### 20210916(목)
 - 네이버 Api 로그인(user 권한) 기능 추가 기술참조: https://tlatmsrud.tistory.com/48?category=858575
 - application-oauth-local.properties 설정파일 추가 및 application-db-h2.properties 데이터설정도 분리
 - 사용: spring.profiles.include=oauth-local,db-h2
 - 네이버 API OAuth2 사용으로 인증에 관련된 변수값 임시 저장처리용 Dto/OAuthAttributes 클래스 추가
-- OAuth 인증 후 DB 저장용 OAuthUsers @엔티티 클래스 + OAuthUsersRepository DAO 인터페이스 생성(여기까지)
+- OAuth 인증 후 DB 저장용 OAuthUsers @엔티티 클래스 + OAuthUsersRepository DAO 인터페이스 생성
 - SecurityConfig 클래스에서 OAuth2 추가(아래)
 ```properties
   .and()
   .oauth2Login()
   .loginPage("/login")//추가
   .userInfoEndpoint()
-  .userService(customOAuth2UserService);//아래 configure 실행결과 처리 + 네이버 API OAuth2 를 처리할 서비스 지정
+  .userService(customOAuth2UserService);//네이버 API OAuth2 를 처리할 서비스 지정
 ```
 - 위 configure() 메서드 결과를 네이버 Api 로그인과 같이 사용하기 위해서 CustomOAuth2UserService 서비스 클래스 추가
 - 클래스 CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> 기본 매서드 추가(나중에 네이버로그인시 처리)

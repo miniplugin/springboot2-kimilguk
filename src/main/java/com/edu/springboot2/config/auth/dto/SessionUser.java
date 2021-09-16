@@ -6,6 +6,9 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
+/**
+ * 이 클래스는 세션으로 저장될 임시값을 저장 하는 역할
+ */
 @Getter
 public class SessionUser implements Serializable {
     private String name;

@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+/**
+ * 이 클래스는 네이버 아이디 로그인 인증 정보를 받은 값을 임시 저장하는 변수
+ */
 @Getter
 public class OAuthAttributes {
     private static final Logger logger = LoggerFactory.getLogger(OAuthAttributes.class);

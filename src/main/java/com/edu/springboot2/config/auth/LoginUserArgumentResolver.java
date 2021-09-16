@@ -18,6 +18,9 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
+/**
+ * 이 클래스는 로그인 세션 발생결과를 컨트롤러 @LoginUser 인터페이스를 파라미터 매개변수로 받아서 세션 처리 하는 역할
+ */
 @RequiredArgsConstructor//final 멤버객체를 인젝션 시킴
 @Component//스프링빈으로 등록 시킴
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
