@@ -1,6 +1,26 @@
 #### 전체 작업 10일용 ( 9월8일 ~ 9월17일 )
-- 결과 깃 소스: https://github.com/miniplugin/springboot2-kimilguk
+- 결과 깃 소스(기존 브랜치-master): https://github.com/miniplugin/springboot2-kimilguk
 - 결과 헤로쿠 배포: https://kimilguk-springboot2.herokuapp.com/
+- Git 추가작업(신규 브랜치-jwt): API 서버로 사용
+- 사용예시1: 서버는 "ADMIN 관리자로 로그이됨" 토큰을 생성하여 이를 클라이언트에 제공할 수 있게 만든다.
+- 사용예시2: 클라이언트는 해당 토큰을 사용하여 ADMIN 사용자로 로그인됨을 이용하여 회원 목록과 회원 이메일을 확인할 수 있게 만든다. 
+- API 서버에서 simple_users 엔티티에 email 필드 추가
+
+#### 20211018(월): 작업예정
+- 어제 이어서 7번 부터 참조: https://ws-pace.tistory.com/82?category=964036
+- 단, 회원가입자 한해서 토큰을 발급하지않고, /token 접근시 무조건 발급하게 처리한다.
+
+#### 20211017(일): 현재 모든 작업은 jwt 키워드로 검색 가능
+- RestAPI 구조에서 스프링시큐리티 > JWT(Json Web Token) 을 사용하는 이유(아래)
+- 클라이언트 쪽 RestAPI 구조에서는 로그인 폼이 따로 존재하지 않으므로 인증권한이 없다는 오류를 JSON 형태로  반환:아래 클래스
+- 서버에서 UsernamePasswordAuthenticationFilter 인증 클래스 작동전 Json 반환값을 처리해야 한다.
+- 서버는 클라이언트의 로그인 정보를 저장하지 않고 토큰기반의 인증 메커니즘으로 작동되므로 무상태로 작동된다.
+1) JWT 외부 의존성 추가. implementation 'io.jsonwebtoken:jjwt:0.9.1'
+2) jwt_users 엔티티 생성 및 레포지토리(CRUD 메서드 자동생성) 생성 
+3) JwtProvider 클래스 생성: Jwt 로 인증정보를 조회 및 권한 조회 메서드
+4) CustomUserDetailsService 서비스 생성: 인증정보(토큰조회) 결과를 UserDetails 로 반환 메서드
+5) 기존 SecurityConfig.java 에 .addFilterBefore 메서드로 필터를 추가한다
+6) 일반적으로 회원가입자 한해서 토큰을 발급하지만, 현재는 /token 접근시 무조건 발급하게 처리한다.
 
 #### 20210917(금)
 - DB 종류를 PostgreSQL 로 마이그 레이션: 

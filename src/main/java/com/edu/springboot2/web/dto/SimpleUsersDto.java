@@ -20,6 +20,7 @@ public class SimpleUsersDto {
     private String role;
     private Boolean enabled;
     private LocalDateTime modifiedDate;
+    private String email;
 
     //조회
     public SimpleUsersDto(SimpleUsers entity){
@@ -29,14 +30,16 @@ public class SimpleUsersDto {
         this.role = entity.getRole();
         this.enabled = entity.getEnabled();
         this.modifiedDate = entity.getModifiedDate();
+        this.email = entity.getEmail();
     }
     //저장,수정
     @Builder//Set 매서드로 값을 저장시킬때 빌더 매서드로 대체하면 한번에 작업 가능함.
-    public SimpleUsersDto(String username, String password, String role, Boolean enabled) {
+    public SimpleUsersDto(String username, String password, String role, Boolean enabled, String email) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.enabled = enabled;
+        this.email = email;
     }
     //DB 저장 후 PK 값 반환 가능
     public SimpleUsers toEntity(){
@@ -50,6 +53,7 @@ public class SimpleUsersDto {
                 .password(encPassword)
                 .role(role)
                 .enabled(enabled)
+                .email(email)
                 .build();
     }
     /*

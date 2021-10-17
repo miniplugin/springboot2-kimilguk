@@ -1,6 +1,8 @@
 package com.edu.springboot2.config;
 
 import com.edu.springboot2.auth.Role;
+import com.edu.springboot2.config.jwt.JwtAuthenticationFilter;
+import com.edu.springboot2.config.jwt.JwtProvider;
 import com.edu.springboot2.service.oauth2.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.sql.DataSource;
 
@@ -22,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;//데이터베이스에서 쿼리로 인증 결과를 사용하는 객체로 사용
     private final CustomOAuth2UserService customOAuth2UserService;
+    private final JwtProvider jwtProvider;//JWT 때문에 추가
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -42,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().invalidateHttpSession(true)
                 .logoutSuccessUrl("/")//여기까지가 DB 로그인처리
                 .and()//여기부터 OAuth 로그인처리
+                .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)//JWT 때문에 추가
                 .oauth2Login()
                 .loginPage("/login")//로그인페이지 추가
                 .userInfoEndpoint()

@@ -5,11 +5,11 @@
         <form name="form_save" action="/simple_users/save" method="post">
             <div class="form-group">
                 <label for="title">회원ID</label>
-                <input type="text" class="form-control" name="username" id="username" placeholder="아이디를 입력하세요">
+                <input type="text" class="form-control" name="username" id="username" placeholder="아이디를 입력하세요" required>
             </div>
             <div class="form-group">
                 <label for="author">암호</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="암호를 입력하세요">
+                <input type="password" class="form-control" name="password" id="password" placeholder="암호를 입력하세요" required>
             </div>
             <div class="form-group">
                 <label for="author">회원권한</label>
@@ -23,6 +23,10 @@
                 <label for="author">로그인가능</label><br>
                 <input type="radio" name="enabled" value="true" checked>허용
                 <input type="radio" name="enabled" value="false">금지
+            </div>
+            <div class="form-group">
+                <label for="title">회원email</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="이메일을 입력하세요" required>
             </div>
             <a href="javascript:history.go(-1);" role="button" class="btn btn-secondary">취소</a>
             <button type="submit" class="btn btn-primary" id="btn-member-save">등록</button>

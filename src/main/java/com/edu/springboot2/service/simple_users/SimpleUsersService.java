@@ -37,7 +37,7 @@ public class SimpleUsersService {
     public Long update(Long id, SimpleUsersDto requestDto){
         SimpleUsers simpleUsers = simpleUsersRepository.findById(id).orElseThrow(() -> new
                 IllegalArgumentException("해당 회원이 없습니다. id="+ id));
-        simpleUsers.update(requestDto.getUsername(),requestDto.getPassword(),requestDto.getRole(),requestDto.getEnabled());
+        simpleUsers.update(requestDto.getUsername(),requestDto.getPassword(),requestDto.getRole(),requestDto.getEnabled(), requestDto.getEmail());
         return id;
     }
     @Transactional

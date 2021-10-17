@@ -42,15 +42,19 @@ public class SimpleUsers extends BaseTimeEntity {
     @Column(nullable = false)
     private Boolean enabled;
 
+    @Column(nullable = false)
+    private String email;
+
     @Builder //Set 매서드로 값을 저장시킬때 빌더 매서드로 대체하면 한번에 작업 가능함.
-    public SimpleUsers(String username, String password, String role, Boolean enabled){
+    public SimpleUsers(String username, String password, String role, Boolean enabled, String email){
         this.username = username;
         this.password = password;
         this.role = role;
         this.enabled = enabled;
+        this.email = email;
     }
     //수정시 DB 쿼리 없이 아래 메서드로 DB 데이터 바로 수정 가능
-    public void update(String username, String password, String role, Boolean enabled){
+    public void update(String username, String password, String role, Boolean enabled, String email){
         String encPassword = null;
         if(!password.isEmpty()) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -62,6 +66,7 @@ public class SimpleUsers extends BaseTimeEntity {
         }
         this.role = role;
         this.enabled = enabled;
+        this.email = email;
     }
     /*
     @Override
