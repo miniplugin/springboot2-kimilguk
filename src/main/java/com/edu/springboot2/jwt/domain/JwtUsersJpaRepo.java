@@ -1,5 +1,6 @@
-package com.edu.springboot2.domain.jwt_users;
+package com.edu.springboot2.jwt.domain;
 
+import com.edu.springboot2.jwt.domain.JwtUsers;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

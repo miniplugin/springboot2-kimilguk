@@ -1,6 +1,7 @@
-package com.edu.springboot2.config.jwt;
+package com.edu.springboot2.jwt.config;
 
-import com.edu.springboot2.service.jwt.CustomUserDetailsService;
+import com.edu.springboot2.auth.Role;
+import com.edu.springboot2.jwt.service.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -16,7 +17,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 이 클래스는 Json Web Token 생성 및 유효성 검증을 하는 컴포넌트이다.
@@ -38,7 +38,7 @@ public class JwtProvider {
     }
 
     // Jwt 생성
-    public String createToken(String userPk, List<String> roles) {
+    public String createToken(String userPk, Role roles) {
         // user 구분을 위해 Claims에 User Pk값 넣어줌
         Claims claims = Jwts.claims().setSubject(userPk);
         claims.put("roles", roles);

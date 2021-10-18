@@ -1,8 +1,8 @@
 package com.edu.springboot2.config;
 
 import com.edu.springboot2.auth.Role;
-import com.edu.springboot2.config.jwt.JwtAuthenticationFilter;
-import com.edu.springboot2.config.jwt.JwtProvider;
+import com.edu.springboot2.jwt.config.JwtAuthenticationFilter;
+import com.edu.springboot2.jwt.config.JwtProvider;
 import com.edu.springboot2.service.oauth2.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

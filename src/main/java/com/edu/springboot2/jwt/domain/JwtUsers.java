@@ -1,4 +1,4 @@
-package com.edu.springboot2.domain.jwt_users;
+package com.edu.springboot2.jwt.domain;
 
 import com.edu.springboot2.domain.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;

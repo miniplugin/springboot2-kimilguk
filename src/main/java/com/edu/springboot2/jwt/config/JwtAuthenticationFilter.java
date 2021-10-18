@@ -1,4 +1,4 @@
-package com.edu.springboot2.config.jwt;
+package com.edu.springboot2.jwt.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

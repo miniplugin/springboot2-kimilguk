@@ -1,6 +1,6 @@
-package com.edu.springboot2.service.jwt;
+package com.edu.springboot2.jwt.service;
 
-import com.edu.springboot2.domain.jwt_users.JwtUsersJpaRepo;
+import com.edu.springboot2.jwt.domain.JwtUsersJpaRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
