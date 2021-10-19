@@ -15,6 +15,7 @@
 - Principal 정보: https://coding-nyan.tistory.com/127
 - 지금까지 작업한 것은 로그인까지 연동된 소스라서 복잡함. 기존 simple_users DB 사용자를 기준으로 토큰인증 기술로 변경.
 - 로컬 결과 확인: http://127.0.0.1:8080/api
+  ![ex_screenshot](./README/img.png)
 - 단, 아래 처럼 SecurityConfig 에서 토큰을 사용할때는 세션 사용을 중지해야 합니다. 일반 서버로 사용할때는 주석 처리 해 주세요.
 ```
 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
