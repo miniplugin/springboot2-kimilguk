@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    function viewUser(obj) {
+	    //alert(obj.value); // 선택된 option의 value가 출력된다!
+	    var user_name = obj.value;
+        $.ajax({
+            url:"/api/v1/simple_users/"+user_name,
+            type:"get",
+            dataType:"json",//전송받는 데이터형태
+            headers: {
+                "Authorization": "{{token}}"
+            },
+            success: function(result) {
+                //alert("성공" + JSON.stringify(result.body.email));
+                $("#email").text("");
+                $("#email").text(result.body.email);
+            },
+            error: function(e) {
+                console.log(e.statusText);
+                if(e.status == '404') {
+                    $("#email").text("조회된 값이 없습니다.");
+                }
+            }
+        });
+    }
+	</script>
+</head>
+<body>
+<h2>API 회원 조회</h2>
+<select id="user_name" title="1차선택" onchange="javascript:viewUser(this);">
+    <option value="">사용자를 선택해 주세요</option>
+</select>
+<span>사용자 이메일은 [ </span><span id="email">?</span> ] 입니다.
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url:"/api/v1/simple_users/list",
+        type:"get",
+        dataType:"json",//전송받는 데이터형태
+        headers: {
+			"Authorization": "{{token}}"
+		},
+        success: function(result) {
+            //alert("성공" + JSON.stringify(result.body));
+            $("#email").text("조회된 값이 없습니다.");
+            $(result.body).each(function(i){
+                $("#user_name").append("<option value='" + result.body[i].username + "'>" + result.body[i].username + "</option>");
+            });
+        },
+        error: function(e) {
+            console.log(e.statusText);
+            if(e.status == '404') {
+                $("#email").text("조회된 값이 없습니다.");
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

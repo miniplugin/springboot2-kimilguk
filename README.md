@@ -5,14 +5,23 @@
 - 사용예시1: 서버는 "ADMIN 관리자로 로그이됨" 토큰을 생성하여 이를 클라이언트에 제공할 수 있게 만든다.
 - 사용예시2: 클라이언트는 해당 토큰을 사용하여 ADMIN 사용자로 로그인됨을 이용하여 회원 목록과 회원 이메일을 확인할 수 있게 만든다. 
 - API 서버에서 simple_users 엔티티에 email 필드 추가
+- h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
-#### 20211019(화): 작업예정
+#### 20211020(수): 작업예정
+- 헤로쿠에 배포 및 postman 연동작업.
+- 포스트맨 웹용: https://web.postman.co/
+
+#### 20211019(화): 작업
+- Principal 정보: https://coding-nyan.tistory.com/127
 - 지금까지 작업한 것은 로그인까지 연동된 소스라서 복잡함. 기존 simple_users DB 사용자를 기준으로 토큰인증 기술로 변경.
-- 신규 기술참조: https://do-study.tistory.com/106
-- 클라이언트가 인증 API를 통해 인증 요청
-- 서버는 인증 진행 후 유효한 경우 토큰 발급 (JWT)
-- 다음 요청 시 인증 토큰을 요청에 포함시켜 요청
-- 서버는 요청에 포함된 인증 토큰을 해석해 권한 검사 - 기존 simple_users DB 사용자의 Role 과 연동
+- 로컬 결과 확인: http://127.0.0.1:8080/api
+- 단, 아래 처럼 SecurityConfig 에서 토큰을 사용할때는 세션 사용을 중지해야 합니다. 일반 서버로 사용할때는 주석 처리 해 주세요.
+```
+.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+.and()
+```
+- 작업한 핵심 파일명(검색키워드 jwt): SecurityConfig, JwtProvider, JwtAuthenticationFilter, JwtRestController, api.html, application-jwt.properties
+- JwtController(토큰값 발행 변수 생성추가), api.mustache
 
 #### 20211018(월): 토큰발행 JwtRestContirller.java
 - com.edu.springboot2.jwt 패키지로 정리: 지금까지 Json Web Token 작업 한 파일들 몰아 놓음

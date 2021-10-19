@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -31,7 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
         http
-                .csrf().disable().headers().frameOptions().disable().and()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .headers().frameOptions().disable().and()
                 .authorizeRequests()
                 .antMatchers("/posts/read/**").permitAll()
                 .antMatchers("/mypage/**").hasRole(Role.USER.name())
@@ -52,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);//네이버 API OAuth2 를 처리할 서비스 지정
     }
+
     //인증 매니저(Authentication Manager)가 인증에 대한 실제적 처리를 담당합니다.(아래)
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
