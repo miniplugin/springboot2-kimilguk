@@ -7,11 +7,11 @@
 - API 서버에서 simple_users 엔티티에 email 필드 추가
 - h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
-#### 20211020(수): 작업예정
-- 헤로쿠에 배포 및 postman 연동작업. https://kimilguk-springboot2.herokuapp.com/api
+#### 20211020(수): 작업
+- API 서버 헤로쿠에 배포 및 postman 연동작업. https://kimilguk-springboot2.herokuapp.com/api
 - 포스트맨 웹용: https://web.postman.co/ -> 화면 오른쪽 상단 Publication 메뉴로 채용과제 오픈
   ![ex_screenshot](./README/img_1.png)
-- 채용과제: https://documenter.getpostman.com/view/17938249/UV5XjJ72
+- 채용과제2생성: https://documenter.getpostman.com/view/17938249/UV5XjJ72#intro
 
 #### 20211019(화): 작업
 - Principal 정보: https://coding-nyan.tistory.com/127
