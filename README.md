@@ -8,7 +8,7 @@
 - h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
 #### 20211020(수): 작업예정
-- 헤로쿠에 배포 및 postman 연동작업.
+- 헤로쿠에 배포 및 postman 연동작업. https://kimilguk-springboot2.herokuapp.com/api
 - 포스트맨 웹용: https://web.postman.co/
 
 #### 20211019(화): 작업
