@@ -10,6 +10,7 @@
 #### 20211021(목): 작업예정
 - 지금까지는 저장되지 않는 토큰을 API 서버에서 발급해서 사용했으나,
 - 엑세스 토큰이 내 PC 에 쿠키로 발급되게 처리하고 이것을 컨트롤러에서 사용해 보겠습니다.
+- 참고자료: https://stackoverflow.com/questions/48090485/how-to-retrieve-cookie-from-response-retrofit-okhttp
 
 #### 20211020(수): 작업
 - API 서버 헤로쿠에 배포 및 postman 연동작업. https://kimilguk-springboot2.herokuapp.com/api
