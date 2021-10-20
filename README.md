@@ -9,7 +9,9 @@
 
 #### 20211020(수): 작업예정
 - 헤로쿠에 배포 및 postman 연동작업. https://kimilguk-springboot2.herokuapp.com/api
-- 포스트맨 웹용: https://web.postman.co/
+- 포스트맨 웹용: https://web.postman.co/ -> 화면 오른쪽 상단 Publication 메뉴로 채용과제 오픈
+  ![ex_screenshot](./README/img_1.png)
+- 채용과제: https://documenter.getpostman.com/view/17938249/UV5XjJ72
 
 #### 20211019(화): 작업
 - Principal 정보: https://coding-nyan.tistory.com/127
