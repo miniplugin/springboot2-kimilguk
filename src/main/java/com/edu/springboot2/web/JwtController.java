@@ -36,9 +36,8 @@ import java.util.List;
 @Controller
 public class JwtController {
     private Logger logger = LoggerFactory.getLogger(getClass());
-    private final SimpleUsersService simpleUsersService;
-    private final JwtProvider jwtProvider;//생성자로 객체 주입
 
+    //토큰사용예시(아래)
     public String getToken() throws IOException, ParseException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         Request request = new Request.Builder()
@@ -62,6 +61,8 @@ public class JwtController {
         model.addAttribute("token", token);
         return "api";
     }
+
+    //쿠키로 토큰사용예시(아래)
     public String getCookie() throws IOException, ParseException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         Request request = new Request.Builder()
