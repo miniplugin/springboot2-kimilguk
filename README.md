@@ -7,6 +7,17 @@
 - API 서버에서 simple_users 엔티티에 email 필드 추가
 - h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
+#### 20211022(금): 작업예정
+- 스프링 시큐리티 세션정책 기술참조: https://fenderist.tistory.com/342
+- 토큰도 세션에 저장되어서 사용되는지 확인: SecurityConfig.java > SessionCreationPolicy.STATELESS (아래)
+```
+SessionCreationPolicy.ALWAYS - 스프링시큐리티가 항상 세션을 생성
+SessionCreationPolicy.IF_REQUIRED - 스프링시큐리티가 필요시 생성(기본)
+SessionCreationPolicy.NEVER - 스프링시큐리티가 생성하지않지만, 기존에 존재하면 사용
+SessionCreationPolicy.STATELESS - 스프링시큐리티가 생성하지도않고 기존것을 사용하지도 않음
+ ->JWT 같은토큰방식을 쓸때 사용하는 설정 (현재 설정 때문에 DB 로그인이 않됨.)
+```
+
 #### 20211021(목): 작업 JwtController.java 에 토큰기반 + 쿠키기반으로 적용
 - JwtController 클라이언트(과제)용으로 수정: 추가 implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 - 지금까지는 저장되지 않는 토큰을 API 서버에서 발급해서 사용했으나,
