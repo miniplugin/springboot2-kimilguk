@@ -7,7 +7,8 @@
 - API 서버에서 simple_users 엔티티에 email 필드 추가
 - h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
-#### 20211021(목): 작업예정
+#### 20211021(목): 작업 JwtController.java 에 토큰기반 + 쿠키기반으로 적용
+- JwtController 클라이언트(과제)용으로 수정: 추가 implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 - 지금까지는 저장되지 않는 토큰을 API 서버에서 발급해서 사용했으나,
 - 엑세스 토큰이 내 PC 에 쿠키로 발급되게 처리하고 이것을 컨트롤러에서 사용해 보겠습니다.
 - 토큰을 생성할때 쿠키를 발급하면 됩니다. 아래 쿠키발급참조

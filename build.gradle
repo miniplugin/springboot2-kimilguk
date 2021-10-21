@@ -26,6 +26,10 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.session:spring-session-jdbc' // db 에 세션권한 저장
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+	implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation 'com.googlecode.json-simple:json-simple:1.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
