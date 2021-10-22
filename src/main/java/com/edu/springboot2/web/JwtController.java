@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +57,8 @@ public class JwtController {
         return token;
     }
     @GetMapping("/api")
-    public String apiToken(Model model) throws IOException, ParseException {
+    public String apiToken(Model model, HttpSession session) throws IOException, ParseException {
+        session.invalidate();
         String token = getToken();
         model.addAttribute("token", token);
         return "api";
@@ -78,7 +80,8 @@ public class JwtController {
         return token;
     }
     @GetMapping("/api_cookie")
-    public String apiCookie(Model model) throws IOException, ParseException {
+    public String apiCookie(Model model, HttpSession session) throws IOException, ParseException {
+        session.invalidate();
         String token = getCookie();
         model.addAttribute("token", token);
         return "api";

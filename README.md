@@ -7,9 +7,12 @@
 - API 서버에서 simple_users 엔티티에 email 필드 추가
 - h2 데이터베이스 사용시: http://localhost:8080/h2-console/
 
-#### 20211022(금): API 서버와 토큰서버 동시에 사용가능하게 작업예정
+#### 20211022(금): API 서버와 토큰서버 모두 사용가능하게 작업
 - 스프링 시큐리티 세션정책 기술참조: https://fenderist.tistory.com/342
 - 토큰도 세션에 저장되어서 사용가능한지 확인: SecurityConfig.java > SessionCreationPolicy.STATELESS (현재)
+- SessionCreationPolicy.STATELESS -> SessionCreationPolicy.NEVER 변경 후 성공.
+- 토큰을 구하는 페이지의 컨트롤러에서 세션을 사용하지 않는 명령 추가 session.invalidate();
+- 위 2가지 처리를 하면 동시에 사용은 못하지만, 각각 별다른 설정없이 사용 가능합니다.
 ```
 SessionCreationPolicy.ALWAYS - 스프링시큐리티가 항상 세션을 생성
 SessionCreationPolicy.IF_REQUIRED - 스프링시큐리티가 필요시 생성(기본)
