@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>유니코드 ↔ 한글 변환</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h3>
+		<a href="unicode.html">유니코드 ↔ 한글 변환</a>
+	</h3>
+	<div>
+		<div>
+			<script>
+				function replaceAll(strTemp, strValue1, strValue2) {
+					while (1) {
+						if (strTemp.indexOf(strValue1) != -1)
+							strTemp = strTemp.replace(strValue1, strValue2);
+						else
+							break;
+					}
+					return strTemp;
+				}
+
+				function textCopy(obj) {
+					obj.select();
+					console.log("test");
+					var copyResult = document.execCommand('copy');
+					console.log(copyResult);
+				}
+
+				$(document).ready(
+						function() {
+							$("#uni").keyup(
+									function() {
+										$("#kor").val(
+												unescape(replaceAll($("#uni")
+														.val(), "\\", "%")));
+									});
+
+							$("#kor").keyup(
+									function() {
+										$("#uni").val(
+												replaceAll(escape($("#kor")
+														.val()), "%", "\\"));
+									});
+						});
+			</script>
+			유니코드 <input type="button" class="btn btn-secondary btn-sm"
+				value="내용복사" onclick="textCopy($('#uni'))">
+			<textarea id="uni" placeholder="유니코드 입력하는 곳 ex) %uD55C%uAE00"
+				style="width: 100%" rows="3"></textarea>
+			<br> (\uAC00 형태로 입력하더라도 %uAC00으로 변환해서 한글로 보여주기 때문에 "\" 문자는 "%"
+			문자로 변환되어서 표시된다.)
+			<br> <br> <br>
+			한글 <input type="button" class="btn btn-secondary btn-sm" value="내용복사"
+				onclick="textCopy($('#kor'))">
+			<textarea id="kor" placeholder="한글 입력하는 곳 ex) 한글" style="width: 100%"
+				rows="13"></textarea> 
+</body>
+</html>
